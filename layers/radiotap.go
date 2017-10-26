@@ -10,7 +10,6 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"hash/crc32"
 	"strings"
 
 	"github.com/google/gopacket"
@@ -859,13 +858,6 @@ func (m *RadioTap) DecodeFromBytes(data []byte, df gopacket.DecodeFeedback) erro
 	}
 
 	payload := data[m.Length:]
-	if !m.Flags.FCS() { // Dot11.DecodeFromBytes() expects FCS present
-		fcs := make([]byte, 4)
-		h := crc32.NewIEEE()
-		h.Write(payload)
-		binary.LittleEndian.PutUint32(fcs, h.Sum32())
-		payload = append(payload, fcs...)
-	}
 	m.BaseLayer = BaseLayer{Contents: data[:m.Length], Payload: payload}
 
 	return nil
