@@ -7,8 +7,8 @@
 package tcpassembly
 
 import (
-	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
+	"github.com/gravwellOSS/gopacket"
+	"github.com/gravwellOSS/gopacket/layers"
 	"net"
 	"reflect"
 	"testing"

@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/google/gopacket"
+	"github.com/gravwellOSS/gopacket"
 )
 
 // align calculates the number of bytes needed to align with the width
